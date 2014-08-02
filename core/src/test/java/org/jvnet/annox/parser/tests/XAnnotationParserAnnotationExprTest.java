@@ -45,20 +45,13 @@ public class XAnnotationParserAnnotationExprTest extends TestCase {
 
 	}
 
-	public AnnotationExpr getAnnotationExpr(final String resourceName)
+	public String getAnnotationString(final String resourceName)
 			throws Exception {
 		InputStream is = null;
 		try {
 			is = getClass().getResourceAsStream(resourceName);
 			final String text = IOUtils.toString(is, "UTF-8");
-			final AnnotationExprParser parser = new AnnotationExprParser();
-
-			List<AnnotationExpr> annotations = parser.parse(text);
-
-			assertEquals(1, annotations.size());
-
-			final AnnotationExpr annotationExpr = annotations.get(0);
-			return annotationExpr;
+			return text;
 		} finally {
 			IOUtils.closeQuietly(is);
 		}
@@ -67,7 +60,7 @@ public class XAnnotationParserAnnotationExprTest extends TestCase {
 	public void check(String javaResourceName, String xmlResourceName,
 			Class<?> clazz, Class<? extends Annotation> annotationClazz)
 			throws Exception {
-		final AnnotationExpr annotationExpr = getAnnotationExpr(javaResourceName);
+		final String annotationExpr = getAnnotationString(javaResourceName);
 		final Element element = getElement(xmlResourceName);
 		final Annotation annotation = clazz.getAnnotation(annotationClazz);
 		final XAnnotationParser parser = new XAnnotationParser();

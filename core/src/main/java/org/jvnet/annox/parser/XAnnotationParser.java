@@ -1,5 +1,6 @@
 package org.jvnet.annox.parser;
 
+import japa.parser.ParseException;
 import japa.parser.ast.Node;
 import japa.parser.ast.expr.AnnotationExpr;
 import japa.parser.ast.expr.Expression;
@@ -24,6 +25,7 @@ import org.apache.commons.lang3.Validate;
 import org.jvnet.annox.Constants;
 import org.jvnet.annox.annotation.AnnotationClassNotFoundException;
 import org.jvnet.annox.annotation.NoSuchAnnotationFieldException;
+import org.jvnet.annox.japa.parser.AnnotationExprParser;
 import org.jvnet.annox.japa.parser.ast.visitor.AbstractGenericExpressionVisitor;
 import org.jvnet.annox.model.XAnnotation;
 import org.jvnet.annox.model.annotation.field.XAnnotationField;
@@ -64,7 +66,8 @@ public class XAnnotationParser {
 				annotationClass);
 
 		@SuppressWarnings({ "rawtypes", "unchecked" })
-		final XAnnotation<?> xannotation = new XAnnotation(annotationClass, fields);
+		final XAnnotation<?> xannotation = new XAnnotation(annotationClass,
+				fields);
 		return xannotation;
 
 	}
@@ -149,6 +152,65 @@ public class XAnnotationParser {
 			}
 		}
 		return xannotations;
+	}
+
+	public XAnnotation<?> parse(final String annotationString)
+			throws AnnotationStringParseException,
+			AnnotationExpressionParseException {
+		final AnnotationExpr expression = parseAnnotationExpr(annotationString);
+		return parse(expression);
+	}
+
+	public XAnnotation<?>[] parse(final String[] annotationStrings)
+			throws AnnotationStringParseException,
+			AnnotationExpressionParseException {
+		Validate.noNullElements(annotationStrings);
+		final List<AnnotationExpr> allAnnotationExprs = new ArrayList<AnnotationExpr>(
+				annotationStrings.length);
+		for (String annotationString : annotationStrings) {
+			allAnnotationExprs.addAll(parseAnnotationExprs(annotationString));
+		}
+		final AnnotationExpr[] annotationExprs = new AnnotationExpr[allAnnotationExprs
+				.size()];
+		allAnnotationExprs.toArray(annotationExprs);
+		return parse(annotationExprs);
+	}
+
+	private AnnotationExpr parseAnnotationExpr(final String annotationString)
+			throws AnnotationStringParseException {
+		List<AnnotationExpr> annotationExprs = parseAnnotationExprs(annotationString);
+
+		if (annotationExprs.isEmpty()) {
+			throw new AnnotationStringParseException(
+					MessageFormat.format(
+							"Could not parse the annotation [{0}], this expression apparently contains no annotations.",
+							annotationString), annotationString);
+		} else if (annotationExprs.size() > 1) {
+			throw new AnnotationStringParseException(
+					MessageFormat.format(
+							"Could not parse the annotation [{0}], this expression apparently more than one annotation.",
+							annotationString), annotationString);
+		} else {
+			return annotationExprs.get(0);
+		}
+	}
+
+	private List<AnnotationExpr> parseAnnotationExprs(
+			final String annotationString)
+			throws AnnotationStringParseException {
+		final AnnotationExprParser parser = new AnnotationExprParser();
+
+		try {
+
+			final List<AnnotationExpr> annotations = parser
+					.parse(annotationString);
+
+			return annotations;
+		} catch (ParseException pex) {
+			throw new AnnotationStringParseException(MessageFormat.format(
+					"Could not parse the annotation [{0}].", annotationString),
+					annotationString, pex);
+		}
 	}
 
 	@SuppressWarnings("unchecked")
