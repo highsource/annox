@@ -53,7 +53,7 @@ public class ResourcedXReader implements XReader {
 		} else {
 			this.classLoader = NXConverter.class.getClassLoader();
 		}
-		this.nxconverter = new NXConverter(XAnnotationParser.GENERIC,
+		this.nxconverter = new NXConverter(XAnnotationParser.INSTANCE,
 				this.classLoader);
 	}
 

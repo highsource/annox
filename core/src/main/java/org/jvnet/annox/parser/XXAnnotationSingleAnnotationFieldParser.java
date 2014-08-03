@@ -33,7 +33,7 @@ public class XXAnnotationSingleAnnotationFieldParser<A extends Annotation>
 			return null;
 		} else {
 			try {
-				final XAnnotation<A> xannotation = (XAnnotation<A>) XAnnotationParser.GENERIC
+				final XAnnotation<A> xannotation = (XAnnotation<A>) XAnnotationParser.INSTANCE
 						.parse(element);
 
 				final XAnnotationValue<A> value = new XXAnnotationAnnotationValue<A>(
@@ -72,7 +72,7 @@ public class XXAnnotationSingleAnnotationFieldParser<A extends Annotation>
 		} else {
 			try {
 				@SuppressWarnings("unchecked")
-				final XAnnotation<A> xannotation = (XAnnotation<A>) XAnnotationParser.GENERIC
+				final XAnnotation<A> xannotation = (XAnnotation<A>) XAnnotationParser.INSTANCE
 						.parse(element);
 				final XAnnotationValue<A> value = new XXAnnotationAnnotationValue<A>(
 						xannotation);
@@ -88,8 +88,11 @@ public class XXAnnotationSingleAnnotationFieldParser<A extends Annotation>
 	public XAnnotationField<A> parse(Annotation annotation, String name,
 			Class<?> type) throws NoSuchAnnotationFieldException {
 		final A value = getAnnotationFieldValue(annotation, name);
+		@SuppressWarnings("unchecked")
+		final XAnnotation<A> xannotation = (XAnnotation<A>) XAnnotationParser.INSTANCE
+				.parse(value);
 		return new XSingleAnnotationField<A>(name, type,
-				new XAnnotationAnnotationValue<A>(value));
+				new XAnnotationAnnotationValue<A>(value, xannotation));
 	}
 
 	@Override

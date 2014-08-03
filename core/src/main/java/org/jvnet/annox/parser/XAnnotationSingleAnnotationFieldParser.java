@@ -30,7 +30,7 @@ public class XAnnotationSingleAnnotationFieldParser<A extends Annotation>
 			return null;
 		} else {
 			try {
-				final XAnnotation<A> xannotation = (XAnnotation<A>) XAnnotationParser.GENERIC
+				final XAnnotation<A> xannotation = (XAnnotation<A>) XAnnotationParser.INSTANCE
 						.parse(element);
 				return construct(name, xannotation.getResult(), type);
 			} catch (AnnotationElementParseException aepex) {
@@ -64,7 +64,7 @@ public class XAnnotationSingleAnnotationFieldParser<A extends Annotation>
 			return null;
 		} else {
 			try {
-				final XAnnotation<A> xannotation = (XAnnotation<A>) XAnnotationParser.GENERIC
+				final XAnnotation<A> xannotation = (XAnnotation<A>) XAnnotationParser.INSTANCE
 						.parse(element);
 				return construct(name, xannotation.getResult(), type);
 			} catch (AnnotationExpressionParseException aepex) {
@@ -83,7 +83,10 @@ public class XAnnotationSingleAnnotationFieldParser<A extends Annotation>
 
 	@Override
 	public XAnnotationField<A> construct(String name, A value, Class<?> type) {
+		@SuppressWarnings("unchecked")
+		final XAnnotation<A> xannotation = (XAnnotation<A>) XAnnotationParser.INSTANCE
+				.parse(value);
 		return new XSingleAnnotationField<A>(name, type,
-				new XAnnotationAnnotationValue<A>(value));
+				new XAnnotationAnnotationValue<A>(value, xannotation));
 	}
 }

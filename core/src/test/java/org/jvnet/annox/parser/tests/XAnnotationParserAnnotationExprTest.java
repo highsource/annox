@@ -1,11 +1,8 @@
 package org.jvnet.annox.parser.tests;
 
-import japa.parser.ast.expr.AnnotationExpr;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.annotation.Annotation;
-import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -14,7 +11,6 @@ import junit.framework.TestCase;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
-import org.jvnet.annox.japa.parser.AnnotationExprParser;
 import org.jvnet.annox.model.XAnnotation;
 import org.jvnet.annox.parser.XAnnotationParser;
 import org.w3c.dom.Document;

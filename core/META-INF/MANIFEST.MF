@@ -7,7 +7,7 @@ Bundle-Description: Annox is an open source project which allows you t
 Bundle-License: http://confluence.highsource.org/display/ANX/License
 Bundle-SymbolicName: org.jvnet.annox
 Bundle-ManifestVersion: 2
-Bnd-LastModified: 1407000572527
+Bnd-LastModified: 1407066160582
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-DocURL: http://confluence.highsource.org
 Bundle-Vendor: Highsource

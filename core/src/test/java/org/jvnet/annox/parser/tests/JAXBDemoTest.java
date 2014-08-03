@@ -1,9 +1,20 @@
-Annox
-=====
+package org.jvnet.annox.parser.tests;
 
-Parse Java annotations from text or XML resources.
+import javax.xml.bind.annotation.XmlRootElement;
 
-```java
+import org.jvnet.annox.model.XAnnotation;
+import org.jvnet.annox.parser.AnnotationExpressionParseException;
+import org.jvnet.annox.parser.AnnotationStringParseException;
+import org.jvnet.annox.parser.XAnnotationParser;
+
+import junit.framework.TestCase;
+
+public class JAXBDemoTest extends TestCase {
+
+	public void testXMLRootElement() throws AnnotationStringParseException,
+			AnnotationExpressionParseException {
+		@SuppressWarnings("unchecked")
+
 		// Parse annotation from the string
 		XAnnotation<XmlRootElement> xannotation =
 			(XAnnotation<XmlRootElement>) XAnnotationParser.INSTANCE
@@ -17,4 +28,5 @@ Parse Java annotations from text or XML resources.
 		// Analyze the structure of the annotation
 		assertEquals(String.class, xannotation.getFieldsMap().get("name").getType());
 		assertEquals("##default", xannotation.getFieldsMap().get("namespace").getResult());
-```
+	}
+}

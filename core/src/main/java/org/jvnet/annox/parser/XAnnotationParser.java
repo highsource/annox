@@ -33,7 +33,7 @@ import org.w3c.dom.Element;
 
 public class XAnnotationParser {
 
-	public static final XAnnotationParser GENERIC = new XAnnotationParser();
+	public static final XAnnotationParser INSTANCE = new XAnnotationParser();
 
 	private final ClassLoader classLoader;
 

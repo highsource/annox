@@ -27,7 +27,7 @@ public class NXConverter {
 	private final ClassLoader classLoader;
 
 	public NXConverter() {
-		this(XAnnotationParser.GENERIC, Thread.currentThread()
+		this(XAnnotationParser.INSTANCE, Thread.currentThread()
 				.getContextClassLoader());
 	}
 

@@ -83,7 +83,7 @@ public class XAnnotationParserTest extends TestCase {
 
 	public void testD() throws Exception {
 
-		XAnnotationParser parser = XAnnotationParser.GENERIC;
+		XAnnotationParser parser = XAnnotationParser.INSTANCE;
 
 		final Element element = getElement("d.xml");
 
@@ -113,7 +113,7 @@ public class XAnnotationParserTest extends TestCase {
 
 	public void testF() throws Exception {
 
-		final XAnnotationParser parser = XAnnotationParser.GENERIC;
+		final XAnnotationParser parser = XAnnotationParser.INSTANCE;
 
 		final XAnnotation<?> one = parser.parse(Five.class
 				.getAnnotation(F.class));
@@ -130,7 +130,7 @@ public class XAnnotationParserTest extends TestCase {
 
 	public void testG() throws Exception {
 
-		final XAnnotationParser parser = XAnnotationParser.GENERIC;
+		final XAnnotationParser parser = XAnnotationParser.INSTANCE;
 
 		final XAnnotation<?> one = parser.parse(Six.class
 				.getAnnotation(G.class));
@@ -145,7 +145,7 @@ public class XAnnotationParserTest extends TestCase {
 
 	public void testField() throws Exception {
 
-		final XAnnotationParser parser = XAnnotationParser.GENERIC;
+		final XAnnotationParser parser = XAnnotationParser.INSTANCE;
 
 		final Element element = getElement("field.xml");
 
@@ -158,7 +158,7 @@ public class XAnnotationParserTest extends TestCase {
 
 	public void testFieldBridge() throws Exception {
 
-		final XAnnotationParser parser = XAnnotationParser.GENERIC;
+		final XAnnotationParser parser = XAnnotationParser.INSTANCE;
 
 		final Element element = getElement("fieldBridge.xml");
 
@@ -174,7 +174,7 @@ public class XAnnotationParserTest extends TestCase {
 
 	public void testH() throws Exception {
 
-		final XAnnotationParser parser = XAnnotationParser.GENERIC;
+		final XAnnotationParser parser = XAnnotationParser.INSTANCE;
 
 		final Element element = getElement("h.xml");
 
@@ -204,7 +204,7 @@ public class XAnnotationParserTest extends TestCase {
 
 	public void testJ() throws Exception {
 
-		final XAnnotationParser parser = XAnnotationParser.GENERIC;
+		final XAnnotationParser parser = XAnnotationParser.INSTANCE;
 
 		final XAnnotation<?> one = parser.parse(Seven.class
 				.getAnnotation(J.class));
@@ -221,7 +221,7 @@ public class XAnnotationParserTest extends TestCase {
 
 	public void testK() throws Exception {
 
-		final XAnnotationParser parser = XAnnotationParser.GENERIC;
+		final XAnnotationParser parser = XAnnotationParser.INSTANCE;
 
 		final XAnnotation<?> one = parser.parse(Eight.class
 				.getAnnotation(K.class));
@@ -238,7 +238,7 @@ public class XAnnotationParserTest extends TestCase {
 
 	public void testL() throws Exception {
 
-		final XAnnotationParser parser = XAnnotationParser.GENERIC;
+		final XAnnotationParser parser = XAnnotationParser.INSTANCE;
 
 		final XAnnotation<?> one = parser.parse(Nine.class
 				.getAnnotation(L.class));
@@ -255,7 +255,7 @@ public class XAnnotationParserTest extends TestCase {
 
 	public void testM() throws Exception {
 
-		final XAnnotationParser parser = XAnnotationParser.GENERIC;
+		final XAnnotationParser parser = XAnnotationParser.INSTANCE;
 
 		final XAnnotation<?> one = parser.parse(Ten.class
 				.getAnnotation(M.class));
