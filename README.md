@@ -6,8 +6,8 @@ Parse Java annotations from text or XML resources.
 ```java
 		// Parse annotation from the string
 		XAnnotation<XmlRootElement> xannotation =
-			(XAnnotation<XmlRootElement>) XAnnotationParser.INSTANCE
-				.parse("@javax.xml.bind.annotation.XmlRootElement(name=\"foo\")");
+			(XAnnotation<XmlRootElement>) XAnnotationParser.INSTANCE.parse
+				("@javax.xml.bind.annotation.XmlRootElement(name=\"foo\")");
 
 		// Create an instance of the annotation 
 		XmlRootElement xmlRootElement = xannotation.getResult();
