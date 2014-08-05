@@ -5,7 +5,7 @@ import java.text.MessageFormat;
 
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.Validate;
-import org.jvnet.annox.model.XAnnotationVisitor;
+import org.jvnet.annox.model.XAnnotationFieldVisitor;
 import org.jvnet.annox.model.annotation.value.XAnnotationValue;
 
 public class XArrayAnnotationField<T> extends XAnnotationField<T[]> {
@@ -122,7 +122,7 @@ public class XArrayAnnotationField<T> extends XAnnotationField<T[]> {
 	}
 
 	@Override
-	public <P> P accept(XAnnotationVisitor<P> visitor) {
+	public <P> P accept(XAnnotationFieldVisitor<P> visitor) {
 		return visitor.visitArrayAnnotationField(this);
 	}
 

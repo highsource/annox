@@ -2,16 +2,19 @@ package org.jvnet.annox.parser.java.visitor;
 
 import japa.parser.ast.expr.StringLiteralExpr;
 
-import org.jvnet.annox.util.ValueParseException;
+import org.jvnet.annox.model.annotation.value.XAnnotationValue;
+import org.jvnet.annox.model.annotation.value.XCharAnnotationValue;
+import org.jvnet.annox.parser.exception.ValueParseException;
 
 public final class CharacterExpressionVisitor extends
-		ExpressionVisitor<Character> {
+		ExpressionVisitor<XAnnotationValue<Character>> {
 	public CharacterExpressionVisitor(Class<?> targetClass) {
 		super(targetClass);
 	}
 
 	@Override
-	public Character visitDefault(StringLiteralExpr n, Void arg) {
+	public XAnnotationValue<Character> visitDefault(StringLiteralExpr n,
+			Void arg) {
 		final String value = n.getValue();
 		if (value == null) {
 			throw new RuntimeException(new ValueParseException(value,
@@ -20,7 +23,7 @@ public final class CharacterExpressionVisitor extends
 			throw new RuntimeException(new ValueParseException(value,
 					this.targetClass));
 		} else {
-			return Character.valueOf(value.charAt(0));
+			return new XCharAnnotationValue(Character.valueOf(value.charAt(0)));
 		}
 	}
 }

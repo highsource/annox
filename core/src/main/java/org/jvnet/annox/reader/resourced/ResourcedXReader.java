@@ -16,8 +16,8 @@ import org.jvnet.annox.model.XConstructor;
 import org.jvnet.annox.model.XField;
 import org.jvnet.annox.model.XMethod;
 import org.jvnet.annox.model.XPackage;
-import org.jvnet.annox.parser.AnnotationElementParseException;
 import org.jvnet.annox.parser.XAnnotationParser;
+import org.jvnet.annox.parser.exception.AnnotationElementParseException;
 import org.jvnet.annox.reader.XReader;
 import org.jvnet.annox.reflect.AnnotatedElementException;
 

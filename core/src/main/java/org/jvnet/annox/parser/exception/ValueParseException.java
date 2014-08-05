@@ -1,4 +1,4 @@
-package org.jvnet.annox.util;
+package org.jvnet.annox.parser.exception;
 
 import java.text.MessageFormat;
 

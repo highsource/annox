@@ -14,7 +14,7 @@ import java.util.Set;
 
 import org.apache.commons.lang3.Validate;
 import org.jvnet.annox.model.annotation.field.XAnnotationField;
-import org.jvnet.annox.parser.XAnnotationFieldParser;
+import org.jvnet.annox.parser.XGenericFieldParser;
 
 /**
  * Defines an xannotation.
@@ -132,7 +132,7 @@ public class XAnnotation<A extends Annotation> {
 										+ "] is not defined and it has no default value.");
 					} else {
 						try {
-							field = XAnnotationFieldParser.GENERIC.construct(
+							field = XGenericFieldParser.GENERIC.construct(
 									name, defaultValue, fieldType);
 						} catch (Exception ex) {
 							throw new IllegalArgumentException("Field [" + name
@@ -187,6 +187,10 @@ public class XAnnotation<A extends Annotation> {
 	 */
 	public Class<? extends Annotation> getAnnotationClass() {
 		return annotationClass;
+	}
+
+	public String getAnnotationClassName() {
+		return annotationClass.getName();
 	}
 
 	/**
@@ -262,16 +266,4 @@ public class XAnnotation<A extends Annotation> {
 		return annotation;
 	}
 
-	/**
-	 * Accepts the annotation visitor.
-	 * 
-	 * @param <T>
-	 *            Visitor result type.
-	 * @param visitor
-	 *            visitor.
-	 * @return Result of the visit.
-	 */
-	public <T> T accept(XAnnotationVisitor<T> visitor) {
-		return visitor.visitAnnotation(this);
-	}
 }

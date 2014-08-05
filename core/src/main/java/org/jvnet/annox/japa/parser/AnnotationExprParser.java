@@ -23,19 +23,32 @@ public class AnnotationExprParser {
 		final List<TypeDeclaration> typeDeclarations = compilationUnit
 				.getTypes();
 		if (typeDeclarations.size() > 1) {
-			throw new IllegalArgumentException(
+			throw new ParseException(
 					MessageFormat
 							.format("Annotation [{0}] could not be parsed, it contains an unexpected type declaration.",
 									text));
 		}
 		final TypeDeclaration typeDeclaration = typeDeclarations.get(0);
-		assert typeDeclaration instanceof ClassOrInterfaceDeclaration : MessageFormat
-				.format("Expected [{0}] as type declaration.",
-						ClassOrInterfaceDeclaration.class.getName());
+		if (!(typeDeclaration instanceof ClassOrInterfaceDeclaration)) {
+			throw new ParseException(MessageFormat.format(
+					"Expected [{0}] as type declaration.",
+					ClassOrInterfaceDeclaration.class.getName()));
+		}
 		final ClassOrInterfaceDeclaration classDeclaration = (ClassOrInterfaceDeclaration) typeDeclaration;
-		assert "Dummy".equals(classDeclaration.getName()) : "Expected [Dummy] as class name.";
+		if (!"Dummy".equals(classDeclaration.getName())) {
+			throw new ParseException(MessageFormat.format(
+					"Expected [{0}] as type declaration.", "Dummy"));
+		}
+
 		final List<AnnotationExpr> annotations = typeDeclaration
 				.getAnnotations();
+
+		if (annotations == null || annotations.isEmpty()) {
+			throw new ParseException(
+					MessageFormat
+							.format("Annotation [{0}] could not be parsed, it does not seem to contain an annotation declaration.",
+									text));
+		}
 		return annotations;
 	}
 }

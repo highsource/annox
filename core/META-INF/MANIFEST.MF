@@ -4,13 +4,11 @@ Bundle-Description: Annox is an open source project which allows you t
  be interested in Annox annotation reader for JAXB RI which allows you
   to define JAXB Java/XML mappings in XML resources (instead of annota
  tions).
-Bundle-License: http://confluence.highsource.org/display/ANX/License
+Bundle-License: http://opensource.org/licenses/BSD-2-Clause
 Bundle-SymbolicName: org.jvnet.annox
 Bundle-ManifestVersion: 2
-Bnd-LastModified: 1407066160582
+Bnd-LastModified: 1407268992123
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Bundle-DocURL: http://confluence.highsource.org
-Bundle-Vendor: Highsource
 Import-Package: org.apache.commons.lang3;version="3.2.1",org.apache.co
  mmons.lang3.builder;version="3.2.1"
 Tool: Bnd-1.15.0
@@ -27,7 +25,7 @@ Export-Package: org.jvnet.annox,org.jvnet.annox.annotation;uses:="org.
  ox.reader.resourced,org.jvnet.annox.model,org.apache.commons.lang3,or
  g.jvnet.annox.reader",org.jvnet.annox.util;uses:="org.apache.commons.
  lang3",org.jvnet.annox.xml.bind;uses:="org.jvnet.annox.reflect"
-Bundle-Version: 0.6.0.SNAPSHOT
+Bundle-Version: 1.0.0.SNAPSHOT
 Bundle-Name: Annox Core
 Created-By: 1.8.0 (Oracle Corporation)
 

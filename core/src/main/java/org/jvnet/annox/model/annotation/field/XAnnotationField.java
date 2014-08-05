@@ -1,7 +1,7 @@
 package org.jvnet.annox.model.annotation.field;
 
 import org.apache.commons.lang3.Validate;
-import org.jvnet.annox.model.XAnnotationVisitor;
+import org.jvnet.annox.model.XAnnotationFieldVisitor;
 
 /**
  * Defines an annotation field.
@@ -71,7 +71,7 @@ public abstract class XAnnotationField<T> {
 	 *            visitor to accept.
 	 * @return Result of the visit.
 	 */
-	public abstract <P> P accept(XAnnotationVisitor<P> visitor);
+	public abstract <P> P accept(XAnnotationFieldVisitor<P> visitor);
 
 	/**
 	 * Constructrs an annotation field with the given name.

@@ -8,68 +8,89 @@ import japa.parser.ast.type.Type;
 import japa.parser.ast.type.VoidType;
 import japa.parser.ast.type.WildcardType;
 
+import org.jvnet.annox.model.annotation.value.XAnnotationValue;
+import org.jvnet.annox.model.annotation.value.XClassAnnotationValue;
+import org.jvnet.annox.model.annotation.value.XClassByNameAnnotationValue;
+
 public final class ClassExpressionVisitor extends
-		ExpressionVisitor<Object> {
+		ExpressionVisitor<XAnnotationValue<Class<?>>> {
 	public ClassExpressionVisitor(Class<?> targetClass) {
 		super(targetClass);
 	}
 
 	@Override
-	public Object visit(ClassExpr n, Void arg) {
+	public XAnnotationValue<Class<?>> visit(ClassExpr n, Void arg) {
 		return n.getType().accept(
-				new ExpressionVisitor<Object>(this.targetClass) {
+				new ExpressionVisitor<XAnnotationValue<Class<?>>>(
+						this.targetClass) {
 
 					@Override
-					public Object visit(ClassOrInterfaceType n, Void arg) {
+					public XAnnotationValue<Class<?>> visit(
+							ClassOrInterfaceType n, Void arg) {
 						// TODO Scopes
 						// TODO unknown clases
-						// TODO We'll need a more complex construct for classes here
+						// TODO We'll need a more complex construct for classes
+						// here
 						final String className = n.toString();
 						try {
-							return Class.forName(className);
+							@SuppressWarnings({ "unchecked", "rawtypes" })
+							final XAnnotationValue<Class<?>> classAnnotationValue = new XClassAnnotationValue(
+									Class.forName(className));
+							return classAnnotationValue;
 						} catch (ClassNotFoundException cnfex) {
-							return className;
+							@SuppressWarnings({ "unchecked", "rawtypes" })
+							final XAnnotationValue<Class<?>> classByNameAnnotationValue = new XClassByNameAnnotationValue(
+									className);
+							return classByNameAnnotationValue;
 						}
 					}
 
 					@Override
-					public Object visit(ReferenceType n, Void arg) {
+					public XAnnotationValue<Class<?>> visit(ReferenceType n,
+							Void arg) {
+						// BUG arraycount is not yet considered
 						// TODO consider arrayCount
 						final Type type = n.getType();
-						return type.accept(this, arg);
+						final XAnnotationValue<Class<?>> t = type.accept(this,
+								arg);
+						return t;
 					}
 
+					@SuppressWarnings({ "rawtypes", "unchecked" })
 					@Override
-					public Object visit(VoidType n, Void arg) {
-						return Void.class;
+					public XAnnotationValue<Class<?>> visit(VoidType n, Void arg) {
+						return new XClassAnnotationValue(Void.class);
 					}
 
+					@SuppressWarnings({ "unchecked", "rawtypes" })
 					@Override
-					public Object visit(PrimitiveType n, Void arg) {
+					public XAnnotationValue<Class<?>> visit(PrimitiveType n,
+							Void arg) {
 						switch (n.getType()) {
 						case Boolean:
-							return boolean.class;
+							return new XClassAnnotationValue(boolean.class);
 						case Char:
-							return char.class;
+							return new XClassAnnotationValue(char.class);
 						case Byte:
-							return byte.class;
+							return new XClassAnnotationValue(byte.class);
 						case Short:
-							return short.class;
+							return new XClassAnnotationValue(short.class);
 						case Int:
-							return int.class;
+							return new XClassAnnotationValue(int.class);
 						case Long:
-							return long.class;
+							return new XClassAnnotationValue(long.class);
 						case Double:
-							return double.class;
+							return new XClassAnnotationValue(double.class);
 						case Float:
-							return double.class;
+							return new XClassAnnotationValue(float.class);
 						default:
 							throw new IllegalArgumentException();
 						}
 					}
 
 					@Override
-					public Object visit(WildcardType n, Void arg) {
+					public XAnnotationValue<Class<?>> visit(WildcardType n,
+							Void arg) {
 						// TODO Do we need to support this?
 						// ? extends T
 						// ? super T

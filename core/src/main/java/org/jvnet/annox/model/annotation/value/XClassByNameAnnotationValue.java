@@ -1,5 +1,7 @@
 package org.jvnet.annox.model.annotation.value;
 
+import java.text.MessageFormat;
+
 public class XClassByNameAnnotationValue<I> extends
 		XDynamicAnnotationValue<Class<I>> {
 
@@ -30,8 +32,8 @@ public class XClassByNameAnnotationValue<I> extends
 			final Class<I> _class = (Class<I>) Class.forName(this.className);
 			return _class;
 		} catch (ClassNotFoundException cnfex) {
-			throw new IllegalStateException("Could not file the class ["
-					+ this.className + "]", cnfex);
+			throw new IllegalStateException(MessageFormat.format(
+					"Could not find the class [{0}]", this.className), cnfex);
 		}
 	}
 

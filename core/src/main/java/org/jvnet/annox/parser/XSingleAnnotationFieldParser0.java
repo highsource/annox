@@ -9,14 +9,24 @@ import org.jvnet.annox.annotation.NoSuchAnnotationFieldException;
 import org.jvnet.annox.model.annotation.field.XAnnotationField;
 import org.jvnet.annox.model.annotation.field.XSingleAnnotationField;
 import org.jvnet.annox.model.annotation.value.XAnnotationValue;
+import org.jvnet.annox.parser.exception.AnnotationElementParseException;
+import org.jvnet.annox.parser.exception.AnnotationExpressionParseException;
+import org.jvnet.annox.parser.exception.ValueParseException;
 import org.jvnet.annox.parser.java.visitor.ExpressionVisitor;
+import org.jvnet.annox.parser.value.XAnnotationValueParser;
 import org.jvnet.annox.util.AnnotationElementUtils;
-import org.jvnet.annox.util.ObjectUtils;
-import org.jvnet.annox.util.ValueParseException;
 import org.w3c.dom.Element;
 
-public abstract class XSingleAnnotationFieldParser<T, V> extends
+public class XSingleAnnotationFieldParser0<T, V> extends
 		XAnnotationFieldParser<T, V> {
+
+	private final XAnnotationValueParser<T, V> annotationValueParser;
+	
+	public XSingleAnnotationFieldParser0(
+			XAnnotationValueParser<T, V> annotationValueParser) {
+		Validate.notNull(annotationValueParser);
+		this.annotationValueParser = annotationValueParser;
+	}
 
 	@Override
 	public XAnnotationField<T> parse(Element element, String name, Class<?> type)
@@ -31,8 +41,8 @@ public abstract class XSingleAnnotationFieldParser<T, V> extends
 			return null;
 		} else {
 			try {
-				final V value = parse(draft, type);
-				return construct(name, value, type);
+				final XAnnotationValue<T> value = this.annotationValueParser.parse(draft, type);
+				return new XSingleAnnotationField<T>(name, type, value);
 			} catch (ValueParseException vpex) {
 				throw new AnnotationElementParseException(element, vpex);
 			}
@@ -45,35 +55,22 @@ public abstract class XSingleAnnotationFieldParser<T, V> extends
 		return construct(name, value, type);
 	}
 
-	public V parse(String draft, Class<?> type) throws ValueParseException {
-		try {
-			@SuppressWarnings("unchecked")
-			final V value = (V) ObjectUtils.valueOf(type, draft);
-			return value;
-		} catch (ClassNotFoundException cnfex) {
-			throw new ValueParseException(draft, type, cnfex);
-		} catch (IllegalArgumentException iaex) {
-			throw new ValueParseException(draft, type, iaex);
-		}
-
-	}
-
 	public final XAnnotationField<T> construct(String name, V value,
 			Class<?> type) {
-		final XAnnotationValue<T> fieldValue = construct(value, type);
+		final XAnnotationValue<T> fieldValue = this.annotationValueParser.construct(value, type);
 		return new XSingleAnnotationField<T>(name, type, fieldValue);
 	}
-
-	public abstract XAnnotationValue<T> construct(V value, Class<?> type);
 
 	@Override
 	public XAnnotationField<T> parse(Expression expression, String name,
 			Class<?> type) throws AnnotationExpressionParseException {
-		final ExpressionVisitor<V> expressionVisitor = createExpressionVisitor(type);
+		final ExpressionVisitor<XAnnotationValue<T>> expressionVisitor = this.annotationValueParser
+				.createExpressionVisitor(type);
 		try {
 
-			final V value = expression.accept(expressionVisitor, null);
-			return construct(name, value, type);
+			final XAnnotationValue<T> value = expression.accept(
+					expressionVisitor, null);
+			return new XSingleAnnotationField<T>(name, type, value);
 		} catch (RuntimeException rex) {
 			if (rex.getCause() != null) {
 				throw new AnnotationExpressionParseException(expression,
@@ -83,8 +80,4 @@ public abstract class XSingleAnnotationFieldParser<T, V> extends
 			}
 		}
 	}
-
-	protected abstract ExpressionVisitor<V> createExpressionVisitor(
-			Class<?> type);
-
 }

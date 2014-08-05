@@ -1,4 +1,4 @@
-package org.jvnet.annox.parser;
+package org.jvnet.annox.parser.exception;
 
 import org.w3c.dom.Element;
 

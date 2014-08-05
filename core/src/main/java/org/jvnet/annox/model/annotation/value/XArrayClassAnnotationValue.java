@@ -26,6 +26,14 @@ public class XArrayClassAnnotationValue<A, I> extends
 		this.arrayClassName = arrayClassName;
 	}
 
+	public String getItemClassName() {
+		return itemClassByNameAnnotationValue.getClassName();
+	}
+
+	public int getDimension() {
+		return dimension;
+	}
+
 	@Override
 	protected Object getInternalValue() {
 		return this.arrayClassName;

@@ -11,7 +11,9 @@ import org.jvnet.annox.japa.parser.ast.visitor.AbstractGenericExpressionVisitor;
 import org.jvnet.annox.model.XAnnotation;
 import org.jvnet.annox.model.annotation.field.XAnnotationField;
 import org.jvnet.annox.model.annotation.field.XSingleAnnotationField;
-import org.jvnet.annox.model.annotation.value.XAnnotationAnnotationValue;
+import org.jvnet.annox.model.annotation.value.XXAnnotationAnnotationValue;
+import org.jvnet.annox.parser.exception.AnnotationElementParseException;
+import org.jvnet.annox.parser.exception.AnnotationExpressionParseException;
 import org.jvnet.annox.util.AnnotationElementUtils;
 import org.w3c.dom.Element;
 
@@ -32,7 +34,7 @@ public class XAnnotationSingleAnnotationFieldParser<A extends Annotation>
 			try {
 				final XAnnotation<A> xannotation = (XAnnotation<A>) XAnnotationParser.INSTANCE
 						.parse(element);
-				return construct(name, xannotation.getResult(), type);
+				return construct(name, xannotation, type);
 			} catch (AnnotationElementParseException aepex) {
 				throw new AnnotationElementParseException(annotationElement,
 						aepex);
@@ -66,7 +68,7 @@ public class XAnnotationSingleAnnotationFieldParser<A extends Annotation>
 			try {
 				final XAnnotation<A> xannotation = (XAnnotation<A>) XAnnotationParser.INSTANCE
 						.parse(element);
-				return construct(name, xannotation.getResult(), type);
+				return construct(name, xannotation, type);
 			} catch (AnnotationExpressionParseException aepex) {
 				throw new AnnotationExpressionParseException(annotationElement,
 						aepex);
@@ -87,6 +89,12 @@ public class XAnnotationSingleAnnotationFieldParser<A extends Annotation>
 		final XAnnotation<A> xannotation = (XAnnotation<A>) XAnnotationParser.INSTANCE
 				.parse(value);
 		return new XSingleAnnotationField<A>(name, type,
-				new XAnnotationAnnotationValue<A>(value, xannotation));
+				new XXAnnotationAnnotationValue<A>(value, xannotation));
+	}
+
+	private XAnnotationField<A> construct(String name,
+			XAnnotation<A> xannotation, Class<?> type) {
+		return new XSingleAnnotationField<A>(name, type,
+				new XXAnnotationAnnotationValue<A>(xannotation));
 	}
 }

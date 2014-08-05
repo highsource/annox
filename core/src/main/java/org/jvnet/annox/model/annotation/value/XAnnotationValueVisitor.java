@@ -2,8 +2,6 @@ package org.jvnet.annox.model.annotation.value;
 
 public interface XAnnotationValueVisitor<R> {
 
-	public R visit(XAnnotationAnnotationValue<?> value);
-
 	public R visit(XXAnnotationAnnotationValue<?> value);
 
 	public R visit(XBooleanAnnotationValue value);

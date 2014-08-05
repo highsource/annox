@@ -3,9 +3,9 @@ package org.jvnet.annox.parser.tests;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.jvnet.annox.model.XAnnotation;
-import org.jvnet.annox.parser.AnnotationExpressionParseException;
-import org.jvnet.annox.parser.AnnotationStringParseException;
 import org.jvnet.annox.parser.XAnnotationParser;
+import org.jvnet.annox.parser.exception.AnnotationExpressionParseException;
+import org.jvnet.annox.parser.exception.AnnotationStringParseException;
 
 import junit.framework.TestCase;
 

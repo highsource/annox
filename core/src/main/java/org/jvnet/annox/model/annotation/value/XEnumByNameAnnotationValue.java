@@ -16,6 +16,14 @@ public class XEnumByNameAnnotationValue<E extends Enum<E>> extends
 		this.enumName = enumClass.getClassName() + "." + name;
 	}
 
+	public String getEnumClassName() {
+		return enumByNameAnnotationValue.getClassName();
+	}
+
+	public String getName() {
+		return name;
+	}
+
 	@Override
 	protected Object getInternalValue() {
 		return enumName;

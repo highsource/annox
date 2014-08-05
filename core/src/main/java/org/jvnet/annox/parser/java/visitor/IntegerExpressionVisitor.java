@@ -2,14 +2,17 @@ package org.jvnet.annox.parser.java.visitor;
 
 import japa.parser.ast.expr.StringLiteralExpr;
 
+import org.jvnet.annox.model.annotation.value.XAnnotationValue;
+import org.jvnet.annox.model.annotation.value.XIntAnnotationValue;
+
 public final class IntegerExpressionVisitor extends
-		ExpressionVisitor<Integer> {
+		ExpressionVisitor<XAnnotationValue<Integer>> {
 	public IntegerExpressionVisitor(Class<?> targetClass) {
 		super(targetClass);
 	}
 
 	@Override
-	public Integer visitDefault(StringLiteralExpr n, Void arg) {
-		return Integer.valueOf(n.getValue());
+	public XAnnotationValue<Integer> visitDefault(StringLiteralExpr n, Void arg) {
+		return new XIntAnnotationValue(Integer.valueOf(n.getValue()));
 	}
 }

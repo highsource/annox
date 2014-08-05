@@ -29,6 +29,9 @@ import org.jvnet.annox.japa.parser.AnnotationExprParser;
 import org.jvnet.annox.japa.parser.ast.visitor.AbstractGenericExpressionVisitor;
 import org.jvnet.annox.model.XAnnotation;
 import org.jvnet.annox.model.annotation.field.XAnnotationField;
+import org.jvnet.annox.parser.exception.AnnotationElementParseException;
+import org.jvnet.annox.parser.exception.AnnotationExpressionParseException;
+import org.jvnet.annox.parser.exception.AnnotationStringParseException;
 import org.w3c.dom.Element;
 
 public class XAnnotationParser {
@@ -386,7 +389,7 @@ public class XAnnotationParser {
 			String name, Class<?> type)
 			throws AnnotationExpressionParseException {
 
-		final XAnnotationField<?> field = XAnnotationFieldParser.GENERIC.parse(
+		final XAnnotationField<?> field = XGenericFieldParser.GENERIC.parse(
 				annotationExpression, name, type);
 		return field;
 	}
@@ -395,7 +398,7 @@ public class XAnnotationParser {
 	public XAnnotationField<?> parseField(Element annotationElement,
 			String name, Class<?> type) throws AnnotationElementParseException {
 
-		final XAnnotationField<?> field = XAnnotationFieldParser.GENERIC.parse(
+		final XAnnotationField<?> field = XGenericFieldParser.GENERIC.parse(
 				annotationElement, name, type);
 		return field;
 	}
@@ -404,7 +407,7 @@ public class XAnnotationParser {
 	public XAnnotationField<?> parseField(Annotation annotation, String name,
 			Class<?> type) throws NoSuchAnnotationFieldException {
 
-		final XAnnotationField<?> field = XAnnotationFieldParser.GENERIC.parse(
+		final XAnnotationField<?> field = XGenericFieldParser.GENERIC.parse(
 				annotation, name, type);
 		return field;
 	}

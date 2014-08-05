@@ -13,8 +13,8 @@ import org.junit.Assert;
 import org.jvnet.annox.model.XAnnotation;
 import org.jvnet.annox.model.annotation.field.XSingleAnnotationField;
 import org.jvnet.annox.model.annotation.value.XStringAnnotationValue;
-import org.jvnet.annox.parser.XAnnotationFieldParser;
 import org.jvnet.annox.parser.XAnnotationParser;
+import org.jvnet.annox.parser.XGenericFieldParser;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -198,8 +198,8 @@ public class XAnnotationParserTest extends TestCase {
 		final XAnnotation<D> d = new XAnnotation<D>(D.class);
 		@SuppressWarnings("unchecked")
 		final XAnnotation<D>[] ds = new XAnnotation[] { d };
-		XAnnotationFieldParser.generic().construct("d", d, d.getClass());
-		XAnnotationFieldParser.generic().construct("d", ds, ds.getClass());
+		XGenericFieldParser.generic().construct("d", d, d.getClass());
+		XGenericFieldParser.generic().construct("d", ds, ds.getClass());
 	}
 
 	public void testJ() throws Exception {

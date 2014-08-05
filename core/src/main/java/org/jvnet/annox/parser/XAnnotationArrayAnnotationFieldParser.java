@@ -14,8 +14,10 @@ import org.jvnet.annox.japa.parser.ast.visitor.AbstractGenericExpressionVisitor;
 import org.jvnet.annox.model.XAnnotation;
 import org.jvnet.annox.model.annotation.field.XAnnotationField;
 import org.jvnet.annox.model.annotation.field.XArrayAnnotationField;
-import org.jvnet.annox.model.annotation.value.XAnnotationAnnotationValue;
 import org.jvnet.annox.model.annotation.value.XAnnotationValue;
+import org.jvnet.annox.model.annotation.value.XXAnnotationAnnotationValue;
+import org.jvnet.annox.parser.exception.AnnotationElementParseException;
+import org.jvnet.annox.parser.exception.AnnotationExpressionParseException;
 import org.jvnet.annox.util.AnnotationElementUtils;
 import org.w3c.dom.Element;
 
@@ -116,13 +118,15 @@ public class XAnnotationArrayAnnotationFieldParser<A extends Annotation>
 	public XAnnotationField<A[]> construct(String name, final A[] annotations,
 			Class<?> type) {
 		final XAnnotation<A>[] xannotations = new XAnnotation[annotations.length];
-
+		final XAnnotationValue<A>[] xannotationValues = new XAnnotationValue[annotations.length];
 		for (int index = 0; index < annotations.length; index++) {
 			final XAnnotation<A> xannotation = (XAnnotation<A>) XAnnotationParser.INSTANCE
 					.parse(annotations[index]);
 			xannotations[index] = xannotation;
+			xannotationValues[index] = new XXAnnotationAnnotationValue<A>(
+					annotations[index], xannotations[index]);
 		}
-		return construct(name, xannotations, type);
+		return new XArrayAnnotationField<A>(name, type, xannotationValues);
 	}
 
 	private XAnnotationField<A[]> construct(String name,
@@ -130,8 +134,8 @@ public class XAnnotationArrayAnnotationFieldParser<A extends Annotation>
 		@SuppressWarnings("unchecked")
 		final XAnnotationValue<A>[] xannotationValues = new XAnnotationValue[xannotations.length];
 		for (int index = 0; index < xannotations.length; index++) {
-			xannotationValues[index] = new XAnnotationAnnotationValue<A>(
-					xannotations[index].getResult(), xannotations[index]);
+			xannotationValues[index] = new XXAnnotationAnnotationValue<A>(
+					xannotations[index]);
 		}
 		return new XArrayAnnotationField<A>(name, type, xannotationValues);
 	}

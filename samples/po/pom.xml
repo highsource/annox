@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>org.jvnet.annox</groupId>
 		<artifactId>annox-samples</artifactId>
-		<version>0.6.0-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<dependencies>
@@ -58,6 +58,7 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-invoker-plugin</artifactId>
+				<version>1.9</version>
 				<executions>
 					<execution>
 						<id>maven-integration-test</id>

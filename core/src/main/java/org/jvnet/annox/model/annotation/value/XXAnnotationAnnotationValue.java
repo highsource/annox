@@ -8,20 +8,35 @@ import org.jvnet.annox.model.XAnnotation;
 public class XXAnnotationAnnotationValue<A extends Annotation> extends
 		XDynamicAnnotationValue<A> {
 
-	private final XAnnotation<A> value;
+	private final A annotation;
+	private final XAnnotation<A> xannotation;
 
-	public XXAnnotationAnnotationValue(XAnnotation<A> value) {
-		this.value = Validate.notNull(value);
+	public XXAnnotationAnnotationValue(XAnnotation<A> xannotation) {
+		this.xannotation = Validate.notNull(xannotation);
+		this.annotation = null;
+	}
+
+	public XXAnnotationAnnotationValue(A annotation, XAnnotation<A> xannotation) {
+		this.xannotation = Validate.notNull(xannotation);
+		this.annotation = null;
+	}
+
+	public XAnnotation<A> getXAnnotation() {
+		return this.xannotation;
 	}
 
 	@Override
 	public A getValue() {
-		return this.value.getResult();
+		if (this.annotation == null) {
+			return this.xannotation.getResult();
+		} else {
+			return this.annotation;
+		}
 	}
 
 	@Override
 	protected Object getInternalValue() {
-		return this.value;
+		return this.xannotation;
 	}
 
 	@Override

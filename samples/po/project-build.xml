@@ -5,6 +5,7 @@
 		<fileset dir="${basedir}/lib">
 			<include name="activation-*.jar"/>
 			<include name="annox-*.jar"/>
+			<include name="javaparser-*.jar"/>
 			<include name="commons-lang3-*.jar"/>
 			<include name="jaxb-api-*.jar"/>
 			<include name="jaxb-impl-*.jar"/>
@@ -15,6 +16,7 @@
 		<fileset dir="${basedir}/lib">
 			<include name="activation-*.jar"/>
 			<include name="annox-*.jar"/>
+			<include name="javaparser-*.jar"/>
 			<include name="commons-lang3-*.jar"/>
 			<include name="jaxb-api-*.jar"/>
 			<include name="jaxb-impl-*.jar"/>
@@ -27,6 +29,7 @@
 		<fileset dir="${basedir}/lib">
 			<include name="activation-*.jar"/>
 			<include name="annox-*.jar"/>
+			<include name="javaparser-*.jar"/>
 			<include name="commons-lang3-*.jar"/>
 			<include name="jaxb-api-*.jar"/>
 			<include name="jaxb-impl-*.jar"/>
