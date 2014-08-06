@@ -8,7 +8,11 @@ import japa.parser.ast.type.Type;
 import japa.parser.ast.type.VoidType;
 import japa.parser.ast.type.WildcardType;
 
+import java.lang.reflect.Array;
+
+import org.jvnet.annox.model.annotation.value.AbstractBasicXAnnotationValueVisitor;
 import org.jvnet.annox.model.annotation.value.XAnnotationValue;
+import org.jvnet.annox.model.annotation.value.XArrayClassAnnotationValue;
 import org.jvnet.annox.model.annotation.value.XClassAnnotationValue;
 import org.jvnet.annox.model.annotation.value.XClassByNameAnnotationValue;
 
@@ -48,12 +52,59 @@ public final class ClassExpressionVisitor extends
 					@Override
 					public XAnnotationValue<Class<?>> visit(ReferenceType n,
 							Void arg) {
+
 						// BUG arraycount is not yet considered
 						// TODO consider arrayCount
 						final Type type = n.getType();
 						final XAnnotationValue<Class<?>> t = type.accept(this,
 								arg);
-						return t;
+						final int arrayCount = n.getArrayCount();
+						if (arrayCount == 0) {
+							return t;
+						} else {
+
+							return t.accept(new AbstractBasicXAnnotationValueVisitor<XAnnotationValue<Class<?>>>() {
+
+								@Override
+								public XAnnotationValue<Class<?>> visitDefault(
+										XAnnotationValue<?> value) {
+									throw new IllegalArgumentException();
+								}
+
+								@Override
+								public XAnnotationValue<Class<?>> visit(
+										XArrayClassAnnotationValue<?, ?> value) {
+									@SuppressWarnings({ "unchecked", "rawtypes" })
+									final XAnnotationValue<Class<?>> arrayClassAnnotationValue = new XArrayClassAnnotationValue(
+											value.getItemClassByNameAnnotationValue(),
+											value.getDimension() + arrayCount);
+									return arrayClassAnnotationValue;
+								}
+
+								@Override
+								public XAnnotationValue<Class<?>> visit(
+										XClassAnnotationValue<?> value) {
+									Class<?> _class = value.getValue();
+									for (int index = 0; index < arrayCount; index++) {
+										_class = Array.newInstance(_class, 0)
+												.getClass();
+									}
+									@SuppressWarnings({ "unchecked", "rawtypes" })
+									final XAnnotationValue<Class<?>> classAnnotationValue = new XClassAnnotationValue(
+											_class);
+									return classAnnotationValue;
+								}
+
+								@Override
+								public XAnnotationValue<Class<?>> visit(
+										XClassByNameAnnotationValue<?> value) {
+									@SuppressWarnings({ "unchecked", "rawtypes" })
+									final XAnnotationValue<Class<?>> arrayClassAnnotationValue = new XArrayClassAnnotationValue(
+											value, arrayCount);
+									return arrayClassAnnotationValue;
+								}
+							});
+						}
 					}
 
 					@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -91,10 +142,8 @@ public final class ClassExpressionVisitor extends
 					@Override
 					public XAnnotationValue<Class<?>> visit(WildcardType n,
 							Void arg) {
-						// TODO Do we need to support this?
-						// ? extends T
-						// ? super T
-						throw new UnsupportedOperationException();
+						throw new UnsupportedOperationException(
+								"Wildcard types are not supported.");
 					}
 
 				}, null);

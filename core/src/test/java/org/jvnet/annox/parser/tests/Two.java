@@ -4,7 +4,7 @@ package org.jvnet.annox.parser.tests;
 	booleanField = false, 
 	byteField = 0,
 	charField = 'a',
-	classField = String.class,
+	classField = String[][][].class,
 	doubleField = 1,
 	enumField = E.ONE,
 	floatField = 2.3f,
@@ -22,7 +22,7 @@ package org.jvnet.annox.parser.tests;
 			enumArrayField = {	E.ONE, E.TWO },
 			floatArrayField = { 4.5f, 6.7f },
 			intArrayField = { 8, 9 },
-			longArrayField = { 10, 11 },
+			longArrayField = { 10, -9223372036854775808L },
 			shortArrayField = { 12, 13 },
 			stringArrayField = { "14", "15", "16", "17" }))
 public class Two {

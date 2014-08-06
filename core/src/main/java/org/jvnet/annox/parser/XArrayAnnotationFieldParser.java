@@ -22,12 +22,12 @@ import org.jvnet.annox.parser.value.XAnnotationValueParser;
 import org.jvnet.annox.util.AnnotationElementUtils;
 import org.w3c.dom.Element;
 
-public class XArrayAnnotationFieldParser0<T, V> extends
+public class XArrayAnnotationFieldParser<T, V> extends
 		XAnnotationFieldParser<T[], V[]> {
 
 	private final XAnnotationValueParser<T, V> annotationValueParser;
 
-	public XArrayAnnotationFieldParser0(
+	public XArrayAnnotationFieldParser(
 			XAnnotationValueParser<T, V> annotationValueParser) {
 		this.annotationValueParser = Validate.notNull(annotationValueParser);
 	}

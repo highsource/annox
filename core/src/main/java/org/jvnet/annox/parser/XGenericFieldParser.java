@@ -23,27 +23,27 @@ import org.w3c.dom.Element;
 
 public class XGenericFieldParser<T, V> extends XAnnotationFieldParser<T, V> {
 
-	public static final XAnnotationFieldParser<Boolean, Boolean> BOOLEAN = new XSingleAnnotationFieldParser0<Boolean, Boolean>(
+	public static final XAnnotationFieldParser<Boolean, Boolean> BOOLEAN = new XSingleAnnotationFieldParser<Boolean, Boolean>(
 			new XBooleanAnnotationValueParser());
-	public static final XAnnotationFieldParser<Byte, Byte> BYTE = new XSingleAnnotationFieldParser0<Byte, Byte>(
+	public static final XAnnotationFieldParser<Byte, Byte> BYTE = new XSingleAnnotationFieldParser<Byte, Byte>(
 			new XByteAnnotationValueParser());
-	public static final XAnnotationFieldParser<Integer, Integer> INT = new XSingleAnnotationFieldParser0<Integer, Integer>(
+	public static final XAnnotationFieldParser<Integer, Integer> INT = new XSingleAnnotationFieldParser<Integer, Integer>(
 			new XIntAnnotationValueParser());
-	public static final XAnnotationFieldParser<Long, Long> LONG = new XSingleAnnotationFieldParser0<Long, Long>(
+	public static final XAnnotationFieldParser<Long, Long> LONG = new XSingleAnnotationFieldParser<Long, Long>(
 			new XLongAnnotationValueParser());
-	public static final XAnnotationFieldParser<Short, Short> SHORT = new XSingleAnnotationFieldParser0<Short, Short>(
+	public static final XAnnotationFieldParser<Short, Short> SHORT = new XSingleAnnotationFieldParser<Short, Short>(
 			new XShortAnnotationValueParser());
-	public static final XAnnotationFieldParser<Character, Character> CHAR = new XSingleAnnotationFieldParser0<Character, Character>(
+	public static final XAnnotationFieldParser<Character, Character> CHAR = new XSingleAnnotationFieldParser<Character, Character>(
 			new XCharAnnotationValueParser());
-	public static final XAnnotationFieldParser<Class<?>, Class<?>> CLASS = new XSingleAnnotationFieldParser0<Class<?>, Class<?>>(
+	public static final XAnnotationFieldParser<Class<?>, Class<?>> CLASS = new XSingleAnnotationFieldParser<Class<?>, Class<?>>(
 			new XClassAnnotationValueParser());
-	public static final XAnnotationFieldParser<Double, Double> DOUBLE = new XSingleAnnotationFieldParser0<Double, Double>(
+	public static final XAnnotationFieldParser<Double, Double> DOUBLE = new XSingleAnnotationFieldParser<Double, Double>(
 			new XDoubleAnnotationValueParser());
-	public static final XAnnotationFieldParser<Float, Float> FLOAT = new XSingleAnnotationFieldParser0<Float, Float>(
+	public static final XAnnotationFieldParser<Float, Float> FLOAT = new XSingleAnnotationFieldParser<Float, Float>(
 			new XFloatAnnotationValueParser());
-	public static final XAnnotationFieldParser<Enum<?>, Enum<?>> ENUM = new XSingleAnnotationFieldParser0<Enum<?>, Enum<?>>(
+	public static final XAnnotationFieldParser<Enum<?>, Enum<?>> ENUM = new XSingleAnnotationFieldParser<Enum<?>, Enum<?>>(
 			new XEnumAnnotationValueParser());
-	public static final XAnnotationFieldParser<String, String> STRING = new XSingleAnnotationFieldParser0<String, String>(
+	public static final XAnnotationFieldParser<String, String> STRING = new XSingleAnnotationFieldParser<String, String>(
 			new XStringAnnotationValueParser());
 
 	@SuppressWarnings("rawtypes")
@@ -51,27 +51,27 @@ public class XGenericFieldParser<T, V> extends XAnnotationFieldParser<T, V> {
 //	@SuppressWarnings("rawtypes")
 //	public static final XAnnotationFieldParser<?, ?> XANNOTATION = new XXAnnotationSingleAnnotationFieldParser();
 
-	public static final XAnnotationFieldParser<Boolean[], Boolean[]> BOOLEAN_ARRAY = new XArrayAnnotationFieldParser0<Boolean, Boolean>(
+	public static final XAnnotationFieldParser<Boolean[], Boolean[]> BOOLEAN_ARRAY = new XArrayAnnotationFieldParser<Boolean, Boolean>(
 			new XBooleanAnnotationValueParser());
-	public static final XAnnotationFieldParser<Byte[], Byte[]> BYTE_ARRAY = new XArrayAnnotationFieldParser0<Byte, Byte>(
+	public static final XAnnotationFieldParser<Byte[], Byte[]> BYTE_ARRAY = new XArrayAnnotationFieldParser<Byte, Byte>(
 			new XByteAnnotationValueParser());
-	public static final XAnnotationFieldParser<Integer[], Integer[]> INT_ARRAY = new XArrayAnnotationFieldParser0<Integer, Integer>(
+	public static final XAnnotationFieldParser<Integer[], Integer[]> INT_ARRAY = new XArrayAnnotationFieldParser<Integer, Integer>(
 			new XIntAnnotationValueParser());
-	public static final XAnnotationFieldParser<Long[], Long[]> LONG_ARRAY = new XArrayAnnotationFieldParser0<Long, Long>(
+	public static final XAnnotationFieldParser<Long[], Long[]> LONG_ARRAY = new XArrayAnnotationFieldParser<Long, Long>(
 			new XLongAnnotationValueParser());
-	public static final XAnnotationFieldParser<Short[], Short[]> SHORT_ARRAY = new XArrayAnnotationFieldParser0<Short, Short>(
+	public static final XAnnotationFieldParser<Short[], Short[]> SHORT_ARRAY = new XArrayAnnotationFieldParser<Short, Short>(
 			new XShortAnnotationValueParser());
-	public static final XAnnotationFieldParser<Character[], Character[]> CHAR_ARRAY = new XArrayAnnotationFieldParser0<Character, Character>(
+	public static final XAnnotationFieldParser<Character[], Character[]> CHAR_ARRAY = new XArrayAnnotationFieldParser<Character, Character>(
 			new XCharAnnotationValueParser());
-	public static final XAnnotationFieldParser<Class<?>[], Class<?>[]> CLASS_ARRAY = new XArrayAnnotationFieldParser0<Class<?>, Class<?>>(
+	public static final XAnnotationFieldParser<Class<?>[], Class<?>[]> CLASS_ARRAY = new XArrayAnnotationFieldParser<Class<?>, Class<?>>(
 			new XClassAnnotationValueParser());
-	public static final XAnnotationFieldParser<Double[], Double[]> DOUBLE_ARRAY = new XArrayAnnotationFieldParser0<Double, Double>(
+	public static final XAnnotationFieldParser<Double[], Double[]> DOUBLE_ARRAY = new XArrayAnnotationFieldParser<Double, Double>(
 			new XDoubleAnnotationValueParser());
-	public static final XAnnotationFieldParser<Float[], Float[]> FLOAT_ARRAY = new XArrayAnnotationFieldParser0<Float, Float>(
+	public static final XAnnotationFieldParser<Float[], Float[]> FLOAT_ARRAY = new XArrayAnnotationFieldParser<Float, Float>(
 			new XFloatAnnotationValueParser());
-	public static final XAnnotationFieldParser<Enum<?>[], Enum<?>[]> ENUM_ARRAY = new XArrayAnnotationFieldParser0<Enum<?>, Enum<?>>(
+	public static final XAnnotationFieldParser<Enum<?>[], Enum<?>[]> ENUM_ARRAY = new XArrayAnnotationFieldParser<Enum<?>, Enum<?>>(
 			new XEnumAnnotationValueParser());
-	public static final XAnnotationFieldParser<String[], String[]> STRING_ARRAY = new XArrayAnnotationFieldParser0<String, String>(
+	public static final XAnnotationFieldParser<String[], String[]> STRING_ARRAY = new XArrayAnnotationFieldParser<String, String>(
 			new XStringAnnotationValueParser());
 
 	// public static final XBooleanArrayAnnotationFieldParser BOOLEAN_ARRAY =

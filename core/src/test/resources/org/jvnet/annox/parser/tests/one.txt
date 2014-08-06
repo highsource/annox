@@ -2,7 +2,7 @@
 		booleanField = false,
 		byteField = 0,
 		charField = 'a',
-		classField = java.lang.String.class,
+		classField = java.lang.String[][][].class,
 		doubleField = 1,
 		enumField = org.jvnet.annox.parser.tests.E.ONE,
 		floatField = 2.3f,

@@ -17,12 +17,12 @@ import org.jvnet.annox.parser.value.XAnnotationValueParser;
 import org.jvnet.annox.util.AnnotationElementUtils;
 import org.w3c.dom.Element;
 
-public class XSingleAnnotationFieldParser0<T, V> extends
+public class XSingleAnnotationFieldParser<T, V> extends
 		XAnnotationFieldParser<T, V> {
 
 	private final XAnnotationValueParser<T, V> annotationValueParser;
 	
-	public XSingleAnnotationFieldParser0(
+	public XSingleAnnotationFieldParser(
 			XAnnotationValueParser<T, V> annotationValueParser) {
 		Validate.notNull(annotationValueParser);
 		this.annotationValueParser = annotationValueParser;

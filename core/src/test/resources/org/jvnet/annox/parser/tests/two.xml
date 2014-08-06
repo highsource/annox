@@ -3,7 +3,7 @@
 	booleanField="false"
 	byteField="0"
 	charField="a"
-	classField="java.lang.String"
+	classField="java.lang.String[][][]"
 	doubleField="1" 
 	enumField="ONE"
 	floatField="2.3" 
@@ -21,7 +21,7 @@
 			enumArrayField="ONE TWO"
 			floatArrayField="4.5 6.7"
 			intArrayField="8 9"
-			longArrayField="10 11"
+			longArrayField="10 -9223372036854775808"
 			shortArrayField="12 13"
 			stringArrayField="14 15">
 			<stringArrayField>16</stringArrayField>
