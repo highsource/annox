@@ -7,7 +7,7 @@ Bundle-Description: Annox is an open source project which allows you t
 Bundle-License: http://opensource.org/licenses/BSD-2-Clause
 Bundle-SymbolicName: org.jvnet.annox
 Bundle-ManifestVersion: 2
-Bnd-LastModified: 1408395993706
+Bnd-LastModified: 1408396184380
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Import-Package: org.apache.commons.lang3;version="3.2.1",org.apache.co
  mmons.lang3.builder;version="3.2.1"
@@ -26,7 +26,7 @@ Export-Package: org.jvnet.annox,org.jvnet.annox.annotation;uses:="org.
  commons.lang3,org.jvnet.annox.reader",org.jvnet.annox.util;uses:="org
  .jvnet.annox,org.apache.commons.lang3",org.jvnet.annox.xml.bind;uses:
  ="org.jvnet.annox.reflect"
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.1.SNAPSHOT
 Bundle-Name: Annox Core
 Created-By: 1.8.0 (Oracle Corporation)
 
