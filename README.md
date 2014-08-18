@@ -18,3 +18,4 @@ Parse Java annotations from text or XML resources.
 		assertEquals(String.class, xannotation.getFieldsMap().get("name").getType());
 		assertEquals("##default", xannotation.getFieldsMap().get("namespace").getResult());
 ```
+
