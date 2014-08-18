@@ -51,7 +51,7 @@
 	</licenses>
 	<scm>
 		<url>https://github.com/highsource/annox</url>
-		<connection>scm:git:git://github.com/highsource/annox-maven-example.git</connection>
+		<connection>scm:git:git://github.com/highsource/annox.git</connection>
 		<developerConnection>scm:git:git@github.com:highsource/annox.git</developerConnection>
 	</scm>
 	<modules>
