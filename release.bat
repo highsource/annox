@@ -5,10 +5,13 @@ pause
 call mvn clean install -DperformRelease
 pause
 rem  -Psamples -Ptests -Pdist
-git commit -a -m="Version %1"
+git commit -a -m "Version %1"
 pause
 rem call mvn scm:tag -Dtag=%1
-git tag -a %1 -m 'Version %1'
+git tag -a %1 -m "Version %1"
+pause
+git push origin master
+git push --tags origin master
 pause
 call mvn -DperformRelease -Psonatype-oss-release clean deploy
 pause
