@@ -2,6 +2,7 @@ package org.jvnet.annox.model.annotation.field;
 
 import org.jvnet.annox.model.XAnnotationFieldVisitor;
 import org.jvnet.annox.model.annotation.value.XAnnotationValue;
+import org.jvnet.annox.util.ClassUtils;
 
 public class XSingleAnnotationField<T> extends XAnnotationField<T> {
 
@@ -11,7 +12,7 @@ public class XSingleAnnotationField<T> extends XAnnotationField<T> {
 	public XSingleAnnotationField(String name, Class<?> type,
 			XAnnotationValue<T> value) {
 		super(name);
-		this.type = type;
+		this.type = ClassUtils.wrapperToPrimitive(type);
 		this.annotationValue = value;
 	}
 
