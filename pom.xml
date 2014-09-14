@@ -44,7 +44,7 @@
 	</contributors>
 	<licenses>
 		<license>
-			<name> BSD 2-Clause License</name>
+			<name>BSD 2-Clause License</name>
 			<url>http://opensource.org/licenses/BSD-2-Clause</url>
 			<distribution>repo</distribution>
 		</license>
@@ -110,8 +110,8 @@
 					<inherited>true</inherited>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<configuration>
-						<source>1.5</source>
-						<target>1.5</target>
+						<source>1.6</source>
+						<target>1.6</target>
 					</configuration>
 				</plugin>
 				<plugin>
