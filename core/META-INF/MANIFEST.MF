@@ -7,7 +7,7 @@ Bundle-Description: Annox is an open source project which allows you t
 Bundle-License: http://opensource.org/licenses/BSD-2-Clause
 Bundle-SymbolicName: org.jvnet.annox
 Bundle-ManifestVersion: 2
-Bnd-LastModified: 1410735713121
+Bnd-LastModified: 1410798865801
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Import-Package: org.apache.commons.lang3;version="3.2.1",org.apache.co
  mmons.lang3.builder;version="3.2.1"
@@ -16,15 +16,16 @@ Export-Package: org.jvnet.annox,org.jvnet.annox.annotation;uses:="org.
  apache.commons.lang3",org.jvnet.annox.io,org.jvnet.annox.model;uses:=
  "org.apache.commons.lang3,org.jvnet.annox.parser,org.jvnet.annox.refl
  ect,org.apache.commons.lang3.builder",org.jvnet.annox.parser;uses:="o
- rg.jvnet.annox.model,org.jvnet.annox.annotation,org.jvnet.annox.util,
- org.apache.commons.lang3",org.jvnet.annox.reader;uses:="org.jvnet.ann
- ox.model,org.jvnet.annox.reflect",org.jvnet.annox.reader.resourced;us
- es:="org.apache.commons.lang3,org.jvnet.annox.io,org.jvnet.annox.mode
- l,org.jvnet.annox.util,org.jvnet.annox.parser,org.jvnet.annox.reflect
- ,org.jvnet.annox.reader",org.jvnet.annox.reflect;uses:="org.jvnet.ann
- ox.reader.resourced,org.jvnet.annox.model,org.apache.commons.lang3,or
- g.jvnet.annox.reader",org.jvnet.annox.util;uses:="org.apache.commons.
- lang3",org.jvnet.annox.xml.bind;uses:="org.jvnet.annox.reflect"
+ rg.jvnet.annox.model,org.jvnet.annox.util,org.jvnet.annox.annotation,
+ org.jvnet.annox,org.apache.commons.lang3",org.jvnet.annox.reader;uses
+ :="org.jvnet.annox.model,org.jvnet.annox.reflect",org.jvnet.annox.rea
+ der.resourced;uses:="org.apache.commons.lang3,org.jvnet.annox.io,org.
+ jvnet.annox.model,org.jvnet.annox.util,org.jvnet.annox.parser,org.jvn
+ et.annox.reflect,org.jvnet.annox.reader",org.jvnet.annox.reflect;uses
+ :="org.jvnet.annox.reader.resourced,org.jvnet.annox.model,org.apache.
+ commons.lang3,org.jvnet.annox.reader",org.jvnet.annox.util;uses:="org
+ .jvnet.annox,org.apache.commons.lang3",org.jvnet.annox.xml.bind;uses:
+ ="org.jvnet.annox.reflect"
 Bundle-Version: 1.0.1.SNAPSHOT
 Bundle-Name: Annox Core
 Created-By: 1.8.0 (Oracle Corporation)

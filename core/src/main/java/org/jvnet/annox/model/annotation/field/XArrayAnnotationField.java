@@ -3,10 +3,10 @@ package org.jvnet.annox.model.annotation.field;
 import java.lang.reflect.Array;
 import java.text.MessageFormat;
 
-import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.Validate;
 import org.jvnet.annox.model.XAnnotationFieldVisitor;
 import org.jvnet.annox.model.annotation.value.XAnnotationValue;
+import org.jvnet.annox.util.ClassUtils;
 
 public class XArrayAnnotationField<T> extends XAnnotationField<T[]> {
 
@@ -22,6 +22,7 @@ public class XArrayAnnotationField<T> extends XAnnotationField<T[]> {
 			throw new IllegalArgumentException(MessageFormat.format(
 					"Type [{0}] is expected to be an array type.", type));
 		}
+		type = ClassUtils.wrapperArrayToPrimitiveArray(type);
 		this.annotationValues = Validate.noNullElements(values);
 		this.type = type;
 		this.componentType = type.getComponentType();

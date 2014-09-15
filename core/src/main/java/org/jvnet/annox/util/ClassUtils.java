@@ -68,6 +68,22 @@ public class ClassUtils {
 	}
 
 	@SuppressWarnings("rawtypes")
+	public static Class wrapperArrayToPrimitiveArray(Class cls) {
+		Validate.notNull(cls);
+		Validate.isTrue(cls.isArray());
+
+		final Class<?> componentType = cls.getComponentType();
+		final Class<?> primitiveComponentType = wrapperToPrimitive(componentType);
+
+		if (primitiveComponentType == componentType) {
+			return cls;
+		} else {
+			Object array = Array.newInstance(primitiveComponentType, 0);
+			return array.getClass();
+		}
+	}
+
+	@SuppressWarnings("rawtypes")
 	public static Class nameToPrimitive(String name) {
 		if (name == null) {
 			return null;
@@ -80,7 +96,8 @@ public class ClassUtils {
 
 	public static Class<?> forName(String className)
 			throws ClassNotFoundException {
-		return forName(className, true, Thread.currentThread().getContextClassLoader());
+		return forName(className, true, Thread.currentThread()
+				.getContextClassLoader());
 	}
 
 	public static Class<?> forName(String className, boolean initialize,
@@ -89,9 +106,8 @@ public class ClassUtils {
 			return null;
 		}
 		if (className.endsWith(ARRAY_SUFFIX)) {
-			final String componentClassName = className.substring(0, className
-					.length()
-					- ARRAY_SUFFIX.length());
+			final String componentClassName = className.substring(0,
+					className.length() - ARRAY_SUFFIX.length());
 			return getArrayClass(forName(componentClassName, initialize, loader));
 		}
 
