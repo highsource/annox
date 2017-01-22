@@ -36,6 +36,7 @@ import japa.parser.ast.expr.ClassExpr;
 import japa.parser.ast.expr.ConditionalExpr;
 import japa.parser.ast.expr.DoubleLiteralExpr;
 import japa.parser.ast.expr.EnclosedExpr;
+import japa.parser.ast.expr.Expression;
 import japa.parser.ast.expr.FieldAccessExpr;
 import japa.parser.ast.expr.InstanceOfExpr;
 import japa.parser.ast.expr.IntegerLiteralExpr;
@@ -90,9 +91,14 @@ public abstract class AbstractGenericExpressionVisitor<R, A> implements
 
 	public abstract R visitDefault(Node n, A arg);
 
-	public R visitDefault(LiteralExpr n, A arg)
+	public R visitDefault(Expression n, A arg)
 	{
 		return visitDefault((Node) n, arg);
+	}
+
+	public R visitDefault(LiteralExpr n, A arg)
+	{
+		return visitDefault((Expression) n, arg);
 	}
 	
 	public R visitDefault(StringLiteralExpr n, A arg)
@@ -121,7 +127,7 @@ public abstract class AbstractGenericExpressionVisitor<R, A> implements
 	}
 
 	public R visitDefault(NameExpr n, A arg) {
-		return visitDefault((Node) n, arg);
+		return visitDefault((Expression) n, arg);
 	}
 	
 
@@ -408,7 +414,7 @@ public abstract class AbstractGenericExpressionVisitor<R, A> implements
 	
 	public R visitDefault(AnnotationExpr n, A arg)
 	{
-		return visitDefault((Node) n, arg);
+		return visitDefault((Expression) n, arg);
 	}
 	
 	

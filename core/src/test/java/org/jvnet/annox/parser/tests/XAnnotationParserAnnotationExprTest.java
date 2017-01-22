@@ -119,4 +119,8 @@ public class XAnnotationParserAnnotationExprTest extends TestCase {
 	public void testEleven() throws Exception {
 		check("eleven.txt", "eleven.xml", Eleven.class, H.class);
 	}
+
+	public void testTwelve() throws Exception {
+		check("twelve.txt", "twelve.xml", Twelve.class, B.class);
+	}
 }

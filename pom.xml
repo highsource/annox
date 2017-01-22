@@ -3,7 +3,7 @@
 	<groupId>org.jvnet.annox</groupId>
 	<artifactId>annox-project</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.2</version>
 	<name>Annox Project</name>
 	<description>Annox is an open source project which allows you to read arbitrary Java annotations from XML resources. JAXB users may be interested in Annox annotation reader for JAXB RI which allows you to define JAXB Java/XML mappings in XML resources (instead of annotations).</description>
 	<url>https://github.com/highsource/annox</url>
@@ -112,6 +112,7 @@
 					<configuration>
 						<source>1.6</source>
 						<target>1.6</target>
+						<foobar>doo</foobar>
 					</configuration>
 				</plugin>
 				<plugin>

@@ -73,6 +73,11 @@ public class XAnnotationArrayAnnotationFieldParser<A extends Annotation>
 						final List<Expression> values = n.getValues();
 						return values.toArray(new Expression[values.size()]);
 					}
+					
+					@Override
+					public Expression[] visitDefault(Expression n, Void arg) {
+						return new Expression[]{n};
+					}
 
 					@Override
 					public Expression[] visitDefault(Node n, Void arg) {
