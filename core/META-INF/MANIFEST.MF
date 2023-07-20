@@ -1,32 +1,30 @@
 Manifest-Version: 1.0
-Bundle-Description: Annox is an open source project which allows you t
- o read arbitrary Java annotations from XML resources. JAXB users may 
- be interested in Annox annotation reader for JAXB RI which allows you
-  to define JAXB Java/XML mappings in XML resources (instead of annota
- tions).
+Bnd-LastModified: 1689854318678
+Build-Jdk-Spec: 17
+Bundle-Description: Annox is an open source project which allows you to 
+ read arbitrary Java annotations from XML resources. JAXB users may be i
+ nterested in Annox annotation reader for JAXB RI which allows you to de
+ fine JAXB Java/XML mappings in XML resources (instead of annotations).
 Bundle-License: http://opensource.org/licenses/BSD-2-Clause
-Bundle-SymbolicName: org.jvnet.annox
 Bundle-ManifestVersion: 2
-Bnd-LastModified: 1485083749508
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Import-Package: org.apache.commons.lang3;version="3.2.1",org.apache.co
- mmons.lang3.builder;version="3.2.1"
-Tool: Bnd-1.15.0
-Export-Package: org.jvnet.annox,org.jvnet.annox.annotation;uses:="org.
- apache.commons.lang3",org.jvnet.annox.io,org.jvnet.annox.model;uses:=
- "org.apache.commons.lang3,org.jvnet.annox.parser,org.jvnet.annox.refl
- ect,org.apache.commons.lang3.builder",org.jvnet.annox.parser;uses:="o
- rg.jvnet.annox.model,org.jvnet.annox.util,org.jvnet.annox.annotation,
- org.jvnet.annox,org.apache.commons.lang3",org.jvnet.annox.reader;uses
- :="org.jvnet.annox.model,org.jvnet.annox.reflect",org.jvnet.annox.rea
- der.resourced;uses:="org.apache.commons.lang3,org.jvnet.annox.io,org.
- jvnet.annox.model,org.jvnet.annox.util,org.jvnet.annox.parser,org.jvn
- et.annox.reflect,org.jvnet.annox.reader",org.jvnet.annox.reflect;uses
- :="org.jvnet.annox.reader.resourced,org.jvnet.annox.model,org.apache.
- commons.lang3,org.jvnet.annox.reader",org.jvnet.annox.util;uses:="org
- .jvnet.annox,org.apache.commons.lang3",org.jvnet.annox.xml.bind;uses:
- ="org.jvnet.annox.reflect"
-Bundle-Version: 1.0.3.SNAPSHOT
 Bundle-Name: Annox Core
-Created-By: 1.8.0_66 (Oracle Corporation)
-
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-SymbolicName: org.jvnet.annox
+Bundle-Version: 1.0.3.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin 5.1.9
+Export-Package: org.jvnet.annox;version="1.0.3.SNAPSHOT",org.jvnet.annox
+ .annotation;version="1.0.3.SNAPSHOT",org.jvnet.annox.io;version="1.0.3.
+ SNAPSHOT",org.jvnet.annox.model;uses:="org.jvnet.annox.reflect";version
+ ="1.0.3.SNAPSHOT",org.jvnet.annox.parser;uses:="org.jvnet.annox.annotat
+ ion,org.jvnet.annox.model";version="1.0.3.SNAPSHOT",org.jvnet.annox.rea
+ der;uses:="org.jvnet.annox.model,org.jvnet.annox.reflect";version="1.0.
+ 3.SNAPSHOT",org.jvnet.annox.reader.resourced;uses:="org.jvnet.annox.mod
+ el,org.jvnet.annox.parser,org.jvnet.annox.reader,org.jvnet.annox.reflec
+ t";version="1.0.3.SNAPSHOT",org.jvnet.annox.reflect;uses:="org.jvnet.an
+ nox.reader";version="1.0.3.SNAPSHOT",org.jvnet.annox.util;version="1.0.
+ 3.SNAPSHOT",org.jvnet.annox.xml.bind;uses:="org.jvnet.annox.reflect";ve
+ rsion="1.0.3.SNAPSHOT"
+Import-Package: org.apache.commons.lang3;version="3.2.1",org.apache.comm
+ ons.lang3.builder;version="3.2.1"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=11))"
+Tool: Bnd-6.3.1.202206071316

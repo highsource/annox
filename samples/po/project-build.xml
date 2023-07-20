@@ -7,8 +7,10 @@
 			<include name="annox-*.jar"/>
 			<include name="javaparser-*.jar"/>
 			<include name="commons-lang3-*.jar"/>
+			<include name="jakarta*.jar"/>
 			<include name="jaxb-api-*.jar"/>
 			<include name="jaxb-impl-*.jar"/>
+			<include name="jaxb-core-*.jar"/>
 			<include name="stax-api-*.jar"/>
 		</fileset>
 	</path>
@@ -18,8 +20,10 @@
 			<include name="annox-*.jar"/>
 			<include name="javaparser-*.jar"/>
 			<include name="commons-lang3-*.jar"/>
+			<include name="jakarta*.jar"/>
 			<include name="jaxb-api-*.jar"/>
 			<include name="jaxb-impl-*.jar"/>
+			<include name="jaxb-core-*.jar"/>
 			<include name="stax-api-*.jar"/>
 			<include name="junit-*.jar"/>
 		</fileset>
@@ -49,8 +53,8 @@
 			destdir="${basedir}/target/classes" 
 			srcdir="${basedir}/src/main/java"
 			classpathref="compile.path"
-			source="1.5"
-			target="1.5">
+			source="11"
+			target="11">
 		</javac>
 		<copy todir="${basedir}/target/classes">
 			<fileset dir="${basedir}/src/main/resources"/>
@@ -62,8 +66,8 @@
 			destdir="${basedir}/target/test-classes" 
 			srcdir="${basedir}/src/test/java"
 			classpathref="test-compile.path"
-			source="1.5"
-			target="1.5">
+			source="11"
+			target="11">
 		</javac>
 		<copy todir="${basedir}/target/test-classes">
 			<fileset dir="${basedir}/src/test/resources"/>

@@ -68,8 +68,6 @@ public class XAnnotationParserTest extends TestCase {
 		System.out.println(four.toString());
 		Assert.assertEquals("Annotations should be identical.", three, four);
 		Assert.assertEquals("Annotation toStrings must have the same length",
-				zeroToString.length(), oneToString.length());
-		Assert.assertEquals("Annotation toStrings must have the same length",
 				oneToString.length(), twoToString.length());
 		Assert.assertEquals("Annotation hashCodes should be identical.",
 				zeroHashCode, oneHashCode);

@@ -9,21 +9,21 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.glassfish.jaxb.core.v2.model.annotation.Locatable;
+import org.glassfish.jaxb.core.v2.runtime.IllegalAnnotationException;
+import org.glassfish.jaxb.runtime.v2.model.annotation.AbstractInlineAnnotationReaderImpl;
+import org.glassfish.jaxb.runtime.v2.model.annotation.LocatableAnnotation;
+import org.glassfish.jaxb.runtime.v2.model.annotation.RuntimeAnnotationReader;
 import org.jvnet.annox.reflect.AnnotatedElementException;
 import org.jvnet.annox.reflect.AnnotatedElementFactory;
 import org.jvnet.annox.reflect.DualAnnotatedElementFactory;
 import org.jvnet.annox.reflect.MethodAnnotatedElement;
 import org.jvnet.annox.reflect.ParameterizedAnnotatedElement;
 
-import com.sun.xml.bind.v2.model.annotation.AbstractInlineAnnotationReaderImpl;
-import com.sun.xml.bind.v2.model.annotation.Locatable;
-import com.sun.xml.bind.v2.model.annotation.LocatableAnnotation;
-import com.sun.xml.bind.v2.model.annotation.RuntimeAnnotationReader;
-import com.sun.xml.bind.v2.runtime.IllegalAnnotationException;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class AnnoxAnnotationReader extends
-		AbstractInlineAnnotationReaderImpl<Type, Class, Field, Method>
+	AbstractInlineAnnotationReaderImpl<Type, Class, Field, Method>
 		implements RuntimeAnnotationReader {
 
 	private AnnotatedElementFactory annotatedElementFactory;
